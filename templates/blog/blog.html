@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}	
+{% block content %}
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url('../static/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text align-items-end justify-content-center">
+        <div class="col-md-9 ftco-animate pb-5 text-center">
+          <h1 class="mb-3 bread">blog</h1>
+          <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'index' %}"> Home <i class="fa fa-chevron-right"></i></a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  <section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row d-flex">
+        {% for blogpost in blogposts %}
+          <div class="col-md-4 d-flex ftco-animate">
+           <div class="blog-entry justify-content-end">
+            <a href="#" class="block-20" style="background-image: url('{{blogpost.image.url}}');">
+            </a>
+            <div class="text mt-3 float-right d-block">
+             <div class="d-flex align-items-center pt-2 mb-4 topp">
+              <div class="one">
+               <span class="day">{{blogpost.date.day}}</span>
+             </div>
+             <div class="two pl-1">
+               <span class="yr">{{blogpost.date.year}}</span>
+               <span class="mos">{{blogpost.date|date:'F'}}</span>
+             </div>
+           </div>
+           <h3 class="heading"><a href="{% url 'blogpost' blogpost.id %}">{{blogpost.name}}</a></h3>
+         </div>
+       </div>
+     </div>
+     {%endfor%}
+     </div>
+    </div>
+  </section>
+  
+
+  {% endblock %}

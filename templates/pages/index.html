@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% load static %}	
+{% block content %}
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url('static/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+	<div class="overlay"></div>
+	<div class="container">
+	  <div class="row no-gutters slider-text align-items-end justify-content-center">
+		<div class="col-md-9 ftco-animate pb-5 text-center">
+			<h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Experienced for <br>Every Kinds of ITSolution</h1>
+			<p><a href="{% url 'about' %}" class="btn btn-primary px-4 py-3">Read more</a></p>
+		</div>
+	  </div>
+	</div>
+</section>
+
+
+<section class="ftco-section services-section">
+	<div class="container">
+		<div class="row justify-content-center pb-4">
+			<div class="col-md-6 heading-section text-center ftco-animate">
+				<h2 class="mb-4">Our Exclusive <span>IT Solution</span> Services</h2>
+			</div>
+		</div>
+		<div class="row d-flex no-gutters">
+			<div class="col-md-3 d-flex align-self-stretch ftco-animate">
+				<div class="media block-6 services d-block">
+					<div class="line"></div>
+					<div class="icon"><span class="flaticon-web-programming"></span></div>
+					<div class="media-body">
+						<br>
+
+						<h3 class="heading mb-3"> IT application development
+						</h3>
+					</div>
+				</div>      
+			</div>
+			<div class="col-md-3 d-flex align-self-stretch ftco-animate">
+				<div class="media block-6 services d-block">
+					<div class="line"></div>
+					<div class="icon"><span class="flaticon-stats"></span></div>
+					<div class="media-body">
+						<br>
+						<h3 class="heading mb-3">COMPUTER MAINTENANCE AND INFOGERANCE
+						</h3>
+					</div>
+				</div>    
+			</div>
+			<div class="col-md-3 d-flex align-self-stretch ftco-animate">
+				<div class="media block-6 services d-block">
+					<div class="line"></div>
+					<div class="icon"><span class="flaticon-secure"></span></div>
+					<div class="media-body">
+						<br>
+
+						<h3 class="heading mb-3">ELECTRONIC SECURITY
+						</h3>
+					</div>
+				</div>      
+			</div>
+			<div class="col-md-3 d-flex align-self-stretch ftco-animate">
+				<div class="media block-6 services d-block">
+					<div class="line"></div>
+					<div class="icon"><span class="flaticon-presentation"></span></div>
+					<div class="media-body">
+						<br>
+
+						<h3 class="heading mb-3">GRAPHICS AND MULTIMEDIA DESIGN
+						</h3>
+					</div>
+				</div>      
+			</div>
+		</div>
+		<center><a href="{% url 'services' %}" class="btn btn-primary px-4 py-3" style="align-content: center;">Explore more services</a></center>
+	</div>
+</section>
+
+<section class="ftco-section ftco-no-pt">
+	<div class="container">
+		<div class="row justify-content-center pb-5">
+			<div class="col-md-12 heading-section text-center ftco-animate">
+				<h2 class="mb-4">Our Strategic <span>Work</span></h2>
+			</div>
+		</div>
+		<div class="row">
+			{% for randomreference in randomreferences %}
+			<div class="col-md-6 col-lg-3 ftco-animate">
+				<div class="project">
+					<div class="img">
+						<img src="{{randomreference.image.url}}" width="200" height="200" >
+					</div>
+					<div class="text text-center">
+						<span>{{randomreference.service}}</span>
+						<h3><a href="#">{{randomreference.name}}</a></h3>
+					</div>
+					
+				</div>
+			</div>
+			{%endfor%}
+		</div>
+	</div>
+</section>
+
+
+
+<section class="ftco-section ftco-no-pb testimony-section" style="background-image: url('../static/images/bg_1.jpg');">
+	<div class="overlay-1"></div>
+	<div class="container-fluid">
+		<div class="row justify-content-center mb-5 pb-3">
+			<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+				<h2 class="mb-4">The creative Team Behind the success</h2>
+			</div>
+		</div>
+		
+		<div class="container">
+			<div class="row text-center">
+				{%for member in members %}
+				<!-- Team item -->
+				<div class="col-xl-3 col-sm-6 mb-5">
+					<div class="testimony-wrap  align-items-stretch"><img src="{{member.image.url}}" alt="" width="200" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+						<h5 class="mb-0 bold">{{member.name}}</h5><span class="large text-uppercase text-muted">{{member.description}}</span>
+						<ul >
+							<li class="list-inline-item"><a href="{{member.facebook}}" ><i class="fa fa-facebook-f"></i></a></li>
+							<li class="list-inline-item"><a href="{{member.twitter}}" ><i class="fa fa-twitter"></i></a></li>
+							<li class="list-inline-item"><a href="{{member.instagram}}" ><i class="fa fa-instagram"></i></a></li>
+							<li class="list-inline-item"><a href="{{member.lindekin}}" ><i class="fa fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+				</div><!-- End -->
+				{%endfor%}		
+	</div>
+</section>
+
+<section class="ftco-section bg-light">
+	<div class="container">
+		<div class="row justify-content-center mb-5 pb-3">
+			<div class="col-md-7 heading-section text-center ftco-animate">
+				<h2>Read from our blog</h2>
+			</div>
+		</div>
+		<div class="row d-flex">
+			{% for randomblog in randomblogs %}
+			<div class="col-md-4 d-flex ftco-animate">
+				
+				<div class="blog-entry justify-content-end">
+					<a href="#" class="block-20" style="background-image: url('{{randomblog.image.url}}');">
+					</a>
+					<div class="text mt-3 float-right d-block">
+						<div class="d-flex align-items-center pt-2 mb-4 topp">
+							<div class="one">
+							<span class="day">{{randomblog.date.day}}</span>
+							</div>
+							<div class="two pl-1">
+							<span class="yr">{{randomblog.date.year}}</span>
+							<span class="mos">{{randomblog.date|date:'F'}}</span>
+							</div>
+						</div>
+						<h3 class="heading"><a href="">{{randomblog.name}}</a></h3>
+					</div>
+				</div>
+				
+			</div>
+			{%endfor%}
+		</div>
+	</div>
+</section>
+
+<section class="ftco-appointment ftco-section img" style="background-image: url('static/website/images/bg_2.jpg');">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 half ftco-animate">
+				<h2 class="mb-4">Don't hesitate to
+					<a href="{% url 'contact' %}" >contact us</a>
+				</h2>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

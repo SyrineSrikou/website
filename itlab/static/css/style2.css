@@ -1,0 +1,136 @@
+.flex-center-start {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: start;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.job_listing_area.plus_padding {
+  padding-top: 100px;
+}
+
+@media (max-width: 767px) {
+  .job_listing_area.plus_padding {
+    padding-top: 60px;
+  }
+}
+
+@media (max-width: 767px) {
+  .job_listing_area .brouse_job {
+    text-align: left !important;
+    margin-top: 20px;
+  }
+}
+
+.job_listing_area .job_lists {
+  margin-top: 50px;
+}
+
+.job_listing_area .job_lists .single_jobs {
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid transparent;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+@media (max-width: 767px) {
+  .job_listing_area .job_lists .single_jobs {
+    display: block !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .job_listing_area .job_lists .single_jobs .jobs_left {
+    display: block !important;
+    overflow: hidden;
+  }
+}
+.job_listing_area .job_lists .single_jobs .jobs_left .thumb {
+  float: left;
+  width: 82px;
+  height: 82px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 15px;
+  background: #F5F7FA;
+  margin-right: 25px;
+  border: 1px solid #F0F0F0;
+}
+
+.job_listing_area .job_lists .single_jobs .jobs_left .jobs_conetent {
+  float: left;
+}
+
+.job_listing_area .job_lists .single_jobs .jobs_left .jobs_conetent h4 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: 400;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+@media (max-width: 767px) {
+  .job_listing_area .job_lists .single_jobs .jobs_left .jobs_conetent h4 {
+    margin-top: 15px;
+  }
+}
+
+.job_listing_area .job_lists .single_jobs .jobs_left .jobs_conetent h4:hover {
+  color:#2a2a72; ;
+}
+
+@media (max-width: 767px) {
+  .job_listing_area .job_lists .single_jobs .jobs_left .jobs_conetent .links_locat {
+    display: block !important;
+  }
+}
+
+.job_listing_area .job_lists .single_jobs .jobs_left .jobs_conetent .links_locat .location {
+  margin-right: 50px;
+}
+
+@media (max-width: 767px) {
+  .job_listing_area .job_lists .single_jobs .jobs_left .jobs_conetent .links_locat .location {
+    margin-right: 10px;
+  }
+}
+
+.job_listing_area .job_lists .single_jobs .jobs_left .jobs_conetent .links_locat .location p {
+  margin-bottom: 0;
+  font-size: 16px;
+  color: #AAB1B7;
+}
+
+.job_listing_area .job_lists .single_jobs .jobs_left .jobs_conetent .links_locat .location p i {
+  margin-right: 7px;
+}
+
+@media (max-width: 767px) {
+  .job_listing_area .job_lists .single_jobs .jobs_right .apply_now {
+    margin: 10px 0;
+  }
+}
+
+.job_listing_area .job_lists .single_jobs:hover {
+  border-color: #2a2a72;
+}

@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url('../static/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text align-items-end justify-content-center">
+        <div class="col-md-9 ftco-animate pb-5 text-center">
+          <h1 class="mb-3 bread">job details </h1>
+          <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'index' %}">Home <i class="fa fa-chevron-right"></i></a></span> <span>job offers      <i class="fa fa-chevron-right"></i></span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="job_details_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="job_details_header">
+                    <div class="single_jobs white-bg d-flex justify-content-between">
+                        <div class="jobs_left d-flex align-items-center">
+                            <div >
+                                <a href="#"><h2>{{offer.title}}</h2></a>
+                                <div class="links_locat d-flex align-items-center">
+                                    <div class="location">
+                                        <p> {{offer.keywords}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="descript_wrap white-bg">
+                    <div class="single_wrap">
+                        <h4>Job description</h4>
+                        <div>{{offer.description}}</div>
+                    </div>
+                    <div class="single_wrap">
+                        <h4>Job responsibilities</h4>
+                        <div>{{offer.responsibility}}</div>
+                    </div>
+                    <div class="single_wrap">
+                        <h4>Job qualifications</h4>
+                        <div>{{offer.qualifications}}</div>
+                    </div>
+                
+                </div>
+                <div class="apply_job_form white-bg">
+                    <body>
+                        <div class=" p-t-100 p-b-50">
+                            <div>
+                                <div>
+                                    <div >
+                                        <h2>Apply for job</h2>
+                                    </div>
+                                    <div class="card-body">
+                                        <form method="POST">
+                                            <div class="form-row">
+                                                <div class="name">Full name</div>
+                                                <div class="value">
+                                                    <input class="input--style-6" type="text" name="full_name" placeholder="Full name">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="name">Email address</div>
+                                                <div class="value">
+                                                    <div class="input-group">
+                                                        <input class="input--style-6" type="email" name="email" placeholder="example@email.com">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="name">Message</div>
+                                                <div class="value">
+                                                    <div class="input-group">
+                                                        <textarea class="textarea--style-6" name="message" placeholder="Message sent to the employer"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="name">Upload CV</div>
+                                                <div class="value">
+                                                    <div class="input-group js-input-file">
+                                                        <input class="input-file" type="file" name="file_cv" id="file">
+                                                        <label class="label--file" for="file">Choose file</label>
+                                                        <span class="input-file__info">No file chosen</span>
+                                                    </div>
+                                                    <div class="label--desc">Upload your CV/Resume or any other relevant file</div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div >
+                                        <button class="btn btn--radius-2 btn--blue-2" type="submit">Send Application</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </body>
+                </div>  
+            </div>
+            <div class="col-lg-5">
+                <div class="job_sumary">
+                    <div class="summery_header">
+                        <h3>&nbsp &nbsp Job Summery</h3>
+                    </div>
+                    <div class="job_content">
+                        <ul>
+                            <li>Location: <span>IT INNOVATION LAB, TUNISIA</span></li>
+                            <li>Published on: <span>{{offer.postdate}}</span></li>
+                            <li>Vacancy: <span>{{offer.Vacancy}}</span></li>
+                            <li>Job Nature: <span> {{offer.offer_nature}}</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  {%endblock%}
