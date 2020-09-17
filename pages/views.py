@@ -4,12 +4,12 @@ from Blog.models import BlogPost
 from references.models import Reference
 
 def index(request):
-    partners = Partner.objects.all()
+    randompartners = Partner.objects.all()[:6]
     members = TeamMember.objects.all()
     randomblogs = BlogPost.objects.all()[:3]
     randomreferences = Reference.objects.all()[:4]
     context = {
-        'partners' : partners, 
+        'randompartners' : randompartners, 
         'members' : members,
         'randomblogs' : randomblogs,
         'randomreferences': randomreferences
@@ -22,4 +22,11 @@ def about(request):
         'members' : members
     }
     return render(request, 'pages/about.html', context)
+
+def partners(request):
+    partners = Partner.objects.all()
+    context = {
+        'partners' : partners
+    }
+    return render(request, 'pages/partners.html', context)
 

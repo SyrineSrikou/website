@@ -1,4 +1,5 @@
 {%extends 'base.html' %}
+{% load i18n %}
 {% load static %}
 {% block content %}
 
@@ -7,8 +8,8 @@
     <div class="container">
       <div class="row no-gutters slider-text align-items-end justify-content-center">
         <div class="col-md-9 ftco-animate pb-5 text-center">
-          <h1 class="mb-3 bread">services</h1>
-          <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'index' %}">Home <i class="fa fa-chevron-right"></i><p class="breadcrumbs"><span class="mr-2"><a href="{% url 'services' %}">services <i class="fa fa-chevron-right"></i></span></p>
+          <h1 class="mb-3 bread">s{% trans "ervices" %}</h1>
+          <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'index' %}">{% trans "Home" %} <i class="fa fa-chevron-right"></i><p class="breadcrumbs"><span class="mr-2"><a href="{% url 'services' %}">{% trans "services" %} <i class="fa fa-chevron-right"></i></span></p>
         </div>
       </div>
     </div>
@@ -18,36 +19,42 @@
 			<div class="container pt-5 pb-4">
 				
                 <div class=" heading-section text-center ftco-animate">
-                    <h2 class="mb-6">COMPUTER MAINTENANCE AND INFOGERANCE</h2>
+                    <h2 class="mb-6">{{service.name}}</h2>
                 </div>
 				<div class="mb-4">
 						<div class="mb-4">
-							<h2 class="text-darkgrey">Our objectifs</h2>
+							<h2 class="text-darkgrey">{% trans "Our objectifs" %}</h2>
 							<div>
-								<p>Supporting our clients in making the right choices for their digital transformation, in developing their digital organization and in ensuring effective implementation.</p>
+								<p>{% trans "Supporting our clients in making the right choices for their digital transformation, in developing their digital organization and in ensuring effective implementation." %}</p>
 							</div>
 						</div>
 				</div>
-			</div>
-			<div class="bg-grey-1">
-				<div class="container pt-5 pb-5">
-					<div class="row">
-                       
-                        <div class="col-md-8">
-                            <div class="mb-6">
-                            <h2 class="text-darkgrey">Our interventions 
-                            </h2>
-                            <div>
-                                {{service.description}}
-                            </div>
-                        </div>
-                        </div>
-                       
-					</div>
-				</div>
+      </div>
+      
+      <div class="row py-5">
+        <div class="col-lg-8 mx-auto">
+          <h1><span >{% trans "Our interventions" %} </span></h1>
+            <div class="card bg-light">
+                <div class="card-body p-5">
+                  
+                    
+                    <section>
+                        <h3>
+                          {% for item in service.description_as_list %}
+                        <ul>
+                        {{item}}
+                        </ul>
+                        {%endfor%}
+                        </h3>
+                        
+                      </section>
+                      
+                </div>
+            </div>
+            </div>
+      </div>
+			
 			</div>
 		</div>
 </section>
-
-
 {% endblock %}

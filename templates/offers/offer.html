@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load static %}
 {% block content %}
 
@@ -7,116 +8,144 @@
     <div class="container">
       <div class="row no-gutters slider-text align-items-end justify-content-center">
         <div class="col-md-9 ftco-animate pb-5 text-center">
-          <h1 class="mb-3 bread">job details </h1>
-          <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'index' %}">Home <i class="fa fa-chevron-right"></i></a></span> <span>job offers      <i class="fa fa-chevron-right"></i></span></p>
+          <h1 class="mb-3 bread">{% trans "job details" %} </h1>
+          <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'index' %}">{% trans "Home" %} <i class="fa fa-chevron-right"></i></a></span> <span>{% trans "job offers" %}     <i class="fa fa-chevron-right"></i></span></p>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="job_details_area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-7">
-                <div class="job_details_header">
-                    <div class="single_jobs white-bg d-flex justify-content-between">
-                        <div class="jobs_left d-flex align-items-center">
-                            <div >
-                                <a href="#"><h2>{{offer.title}}</h2></a>
-                                <div class="links_locat d-flex align-items-center">
-                                    <div class="location">
-                                        <p> {{offer.keywords}}</p>
-                                    </div>
+<section class=" bg-white">
+        <div class="container" >
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="main-content">
+                        <div class="single-content1 ">
+                            <div class="single-job mb-4 d-lg-flex justify-content-between">
+                                <div class="job-text">
+                                    <h1>{{offer.title}}</h1>
+                                    <ul class="mt-4">
+                                        <li class="mb-3"><h5><i class="fa fa-map-marker"></i> {% trans "IT INNOVATION LAB, TUNISIA" %} </h5></li>
+                                        <li class="mb-3"><h5><i class="fa fa-pie-chart"></i> {{offer.keywords}}</h5></li>
+                                        <li class="mb-3"><h5><i class="fa fa-briefcase"></i> {% trans "Nature" %} : {{offer.offer_nature}}</h5></li>
+                                        <li class="mb-3"><h5><i class="fa fa-user-tag"></i>{% trans "Vacancy" %} : {{offer.Vacancy}}</h5></li>
+                                        <li><h5><i class="fa fa-clock-o"></i> {% trans "Posted on" %} : {{offer.postdate}} | {% trans "Deadline for this offer" %} : {{offer.deadline}}</h5></li>
+                                        
                                 </div>
                             </div>
+                        </div>  
+                        
+                        <div class="descript_wrap white-bg">
+                            {% if offer.description %}
+                            <div class="single_wrap">
+                                <h4>{% trans "Job description" %}</h4>
+                                <br>
+                                <section>
+                                    <h5>
+                                      {% for item in offer.description_as_list %}
+                                    <ul>
+                                    {{item}}
+                                    </ul>
+                                    {%endfor%}
+                                    </h5>
+                                    
+                                  </section>
+                            </div>
+                            {% endif %}
+                            <br>
+                            {% if offer.responsibility %}
+                            <div class="single_wrap">
+                                <h4>{% trans "Job responsibilities" %}</h4>
+                                <br>
+                                <section>
+                                    <h5>
+                                      {% for item in offer.responsibility_as_list %}
+                                    <ul>
+                                    {{item}}
+                                    </ul>
+                                    {%endfor%}
+                                    </h5>
+                                    
+                                  </section>
+                            </div>
+                            {% endif %}
+                            <br>
+                            {% if offer.qualifications %}
+                            <div class="single_wrap">
+                                <h4>{% trans "Job qualifications" %}</h4>
+                                <br>
+                                <section>
+                                    <h5>
+                                      {% for item in offer.qualifications_as_list %}
+                                    <ul>
+                                    {{item}}
+                                    </ul>
+                                    {%endfor%}
+                                    </h5>
+                                    
+                                  </section>
+                            </div>
+                            {% endif %}
+                        
                         </div>
-                    </div>
-                </div>
-                <div class="descript_wrap white-bg">
-                    <div class="single_wrap">
-                        <h4>Job description</h4>
-                        <div>{{offer.description}}</div>
-                    </div>
-                    <div class="single_wrap">
-                        <h4>Job responsibilities</h4>
-                        <div>{{offer.responsibility}}</div>
-                    </div>
-                    <div class="single_wrap">
-                        <h4>Job qualifications</h4>
-                        <div>{{offer.qualifications}}</div>
-                    </div>
-                
-                </div>
-                <div class="apply_job_form white-bg">
-                    <body>
-                        <div class=" p-t-100 p-b-50">
-                            <div>
-                                <div>
-                                    <div >
-                                        <h2>Apply for job</h2>
-                                    </div>
-                                    <div class="card-body">
-                                        <form method="POST">
-                                            <div class="form-row">
-                                                <div class="name">Full name</div>
-                                                <div class="value">
-                                                    <input class="input--style-6" type="text" name="full_name" placeholder="Full name">
-                                                </div>
+                        <div class="apply_job_form white-bg">
+                            <body>
+                                <div class=" p-t-100 p-b-50">
+                                    <div>
+                                        <div>
+                                            <div >
+                                                <h2>{% trans "Apply for this job" %}</h2>
                                             </div>
-                                            <div class="form-row">
-                                                <div class="name">Email address</div>
-                                                <div class="value">
-                                                    <div class="input-group">
-                                                        <input class="input--style-6" type="email" name="email" placeholder="example@email.com">
+                                            <div class="card-body">
+                                                <form action="{% url 'application' offer.id %}" method="POST"  enctype="multipart/form-data">
+                                                    {% csrf_token %}
+                                                    <div class="form-row">
+                                                        <div class="name" for="full name">{% trans "Full name" %}</div>
+                                                        <div class="value">
+                                                            <input class="input--style-6" type="text" name="full_name" placeholder="Full name">
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="name">Message</div>
-                                                <div class="value">
-                                                    <div class="input-group">
-                                                        <textarea class="textarea--style-6" name="message" placeholder="Message sent to the employer"></textarea>
+                                                    <div class="form-row">
+                                                        <div class="name" for="email address">{% trans "Email address" %}</div>
+                                                        <div class="value">
+                                                            <div class="input-group">
+                                                                <input class="input--style-6" type="email" name="email" placeholder="example@email.com">
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="name">Upload CV</div>
-                                                <div class="value">
-                                                    <div class="input-group js-input-file">
-                                                        <input class="input-file" type="file" name="file_cv" id="file">
-                                                        <label class="label--file" for="file">Choose file</label>
-                                                        <span class="input-file__info">No file chosen</span>
+                                                    <div class="form-row">
+                                                        <div class="name" for="message">{% trans "Message" %}</div>
+                                                        <div class="value">
+                                                            <div class="input-group">
+                                                                <textarea class="textarea--style-6" name="message" placeholder="Message sent to the employer"></textarea>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="label--desc">Upload your CV/Resume or any other relevant file</div>
-                                                </div>
+                                                    <div class="form-row">
+                                                        <div class="name" for="file_cv">{% trans "Upload CV" %}</div>
+                                                        <div class="value">
+                                                            <div class="input-group js-input-file">
+                                                                <input class="input-file" type="file" name="file_cv" id="file">
+                                                                <label class="label--file" for="file">{% trans "Choose file" %}</label>
+                                                                <span class="input-file__info">{% trans "No file chosen" %}</span>
+                                                            </div>
+                                                            <div class="label--desc">{% trans "Upload your CV/Resume or any other relevant file" %}</div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <left >
+                                                        <button class="btn btn--radius-2 btn--blue-2" type="submit">{% trans "Send Application" %}</button>
+                                                        <div class="submitting"></div>
+                                                    </left>
+                                                </form>
                                             </div>
-                                        </form>
-                                    </div>
-                                    <div >
-                                        <button class="btn btn--radius-2 btn--blue-2" type="submit">Send Application</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </body>
-                </div>  
-            </div>
-            <div class="col-lg-5">
-                <div class="job_sumary">
-                    <div class="summery_header">
-                        <h3>&nbsp &nbsp Job Summery</h3>
-                    </div>
-                    <div class="job_content">
-                        <ul>
-                            <li>Location: <span>IT INNOVATION LAB, TUNISIA</span></li>
-                            <li>Published on: <span>{{offer.postdate}}</span></li>
-                            <li>Vacancy: <span>{{offer.Vacancy}}</span></li>
-                            <li>Job Nature: <span> {{offer.offer_nature}}</span></li>
-                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+</section>
+
   {%endblock%}

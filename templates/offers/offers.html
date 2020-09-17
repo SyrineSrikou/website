@@ -1,4 +1,5 @@
 h{% extends 'base.html' %}
+{% load i18n %}
 {% load static %}	
 {% block content %}
 
@@ -7,57 +8,101 @@ h{% extends 'base.html' %}
     <div class="container">
       <div class="row no-gutters slider-text align-items-end justify-content-center">
         <div class="col-md-9 ftco-animate pb-5 text-center">
-          <h1 class="mb-3 bread">job Offers </h1>
-          <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'index' %}">Home <i class="fa fa-chevron-right"></i></a></span> <span>job offers      <i class="fa fa-chevron-right"></i></span></p>
+          <h1 class="mb-3 bread">{% trans "job Offers "%} </h1>
+          <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'index' %}">{% trans "Home" %} <i class="fa fa-chevron-right"></i></a></span> <span>{% trans "job offers"%}<i class="fa fa-chevron-right"></i></span></p>
         </div>
       </div>
     </div>
   </section>
-<section>
-  <!-- job_listing_area_start  -->
-  <div class="job_listing_area plus_padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="job_lists m-0">
-                    <div class="row">
-                        {% for offer in offers %}
-                        <div class="col-lg-12 col-md-12">
-                            <div class="single_jobs white-bg d-flex justify-content-between">
-                                <div class="jobs_left d-flex align-items-center">
-                                    <div >
-                                        <img src="{{ offer.image.url }}" width="85" height="85" >
-                                    </div>
-                                    
-                                    <div>
-                                        <a href="{% url 'offer' offer.id %}"><h3>  &nbsp {{offer.title}}</h3></a>
-                                        <div class="links_locat d-flex align-items-center">
-                                            <div class="location">
-                                                <p>  &nbsp  Basic skills :&nbsp {{offer.keywords}}</p>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="jobs_right">
-                                    <div class="date">
-                                        <p>Posted on {{offer.postdate}}</p>
-                                    </div>
-                                    <div class="location">
-                                        <p> <i class="fa fa-clock-o"></i> {{offer.offer_nature}}</p>
-                                    </div>
-                                    <div >
-                                        <a href="{% url 'offer' offer.id %}" class="btn btn-info">see more</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {%endfor%} 
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
 
+<section>
+  
+ <div class="container-fluid ">
+  
+  <div class=" row justify-content-center">
+    {% for offer in offers %}
+      <div class="col-md-5 col-lg-4 col-xl-3 col-sm-6 ">
+        
+          <div class=" card shadow-lg border-0 py-2">
+              <div class="card-header border-0 mb-0">
+                  <div class="row justify-content-between">
+                      <div class="col-auto col-sm-auto">
+                          <h4> <span class="badge badge-pill badge-info">{{offer.offer_nature}}</span></h4>
+                      </div>
+                  </div>
+              </div>
+              <div class=" card-body text-center pb-0 mt-0 pt-3">
+                  <div class="d-block">
+                      <h3 class="card-title mb-0 font-weight-bold">{{offer.title}}</h3> 
+                  </div>
+                  <div class="d-inline-flex row mb-3 ">
+                      <div class="col-md-auto">
+                        
+                          <ul class="list-inline my-0">
+                            <li class="list-inline-item"> <span class="badge badge-pill badge-outline ">{{offer.keywords}}</span></li>
+                          </ul>
+                      </div>
+                      
+                  </div>
+                  <div class="date">
+                    <p>{% trans "Posted on" %} {{offer.postdate}}</p>
+                    <p>{% trans "Deadline" %}{{offer.deadline}}</p>
+                </div>
+              </div>
+              <div>
+                  <hr class="hl">
+              </div>
+              <div class="card-footer border-0 text-center mx-auto ">
+                  <h5 class="footer"> <a href="{% url 'offer' offer.id  %}" class="text-decoration-none"> {% trans "VIEW JOB" %} </a></h5>
+              </div>
+          </div>
+          
+      </div>
+      {%endfor%}
+  </div>
+  
+</div>
+
+<div class="row" >
+  <div class="col-md-12">
+    {% if offers.has_other_pages %}
+      <ul class="pagination justify-content-center">
+        {% if offers.has_previous %}
+          <li class="page-item">
+            <a href="?page={{offers.previous_page_number}}" class="page-link">&laquo;</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <a class="page-link">&laquo;</a>
+          </li>
+        {% endif %}
+        {% for i in offers.paginator.page_range %}
+          {% if offers.number == i %}
+            <li class="page-item active">
+              <a class="page-link">{{i}}</a>
+            </li>
+          {% else %}
+            <li class="page-item">
+              <a href="?page={{i}}" class="page-link">{{i}}</a>
+            </li>
+          {% endif %}
+        {% endfor %}
+        {% if offers.has_next %}
+          <li class="page-item">
+            <a href="?page={{offers.next_page_number}}" class="page-link">&raquo;</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <a class="page-link">&raquo;</a>
+          </li>
+        {% endif %}
+      </ul>
+    {% endif %}
+  </div>
+</div>
+<br>
+
+</div>
+
+</section> 
   {%endblock%}

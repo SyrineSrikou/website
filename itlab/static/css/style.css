@@ -8906,7 +8906,7 @@ textarea.form-control {
   border: 4px solid #fff; }
 
 .ftco-section {
-  padding: 7em 0;
+  padding: 3em 0;
   position: relative; }
   @media (max-width: 767.98px) {
     .ftco-section {
@@ -9488,14 +9488,14 @@ textarea.form-control {
   .ftco-counter .counter-wrap {
     margin-bottom: 20px; } }
 
-.block-20 {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 270px; }
+    .block-20 {
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      position: relative;
+      display: block;
+      width: 270px;
+      height: 270px; }
 
 @media (min-width: 768px) {
   .blog-entry {
@@ -9833,3 +9833,129 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+    
+
+
+    .stretch-card>.card {
+      width: 100%;
+      min-width: 100%
+  }
+  
+  body {
+      background-color: #f9f9fa
+  }
+  
+  .flex {
+      -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+      flex: 1 1 auto
+  }
+  
+  @media (max-width:991.98px) {
+      .padding {
+          padding: 1rem
+      }
+  }
+  
+  @media (max-width:767.98px) {
+      .padding {
+          padding: 1rem
+      }
+  }
+  
+  .padding {
+      padding: 2rem !important
+  }
+  
+  .card {
+      border-radius: 5px;
+      -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+      box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+      border: none;
+      margin-bottom: 30px
+  }
+  
+  .card .card-header {
+      background-color: transparent;
+      border-bottom: none;
+      padding: 25px 20px
+  }
+  
+  .card .card-header+.card-block,
+  .card .card-header+.card-block-big {
+      padding-top: 0
+  }
+  
+  .card-block {
+      padding: 1.25rem;
+      background-color: #fff
+  }
+  
+  .m-b-20 {
+      margin-bottom: 20px
+  }
+  
+  .card-sub {
+      cursor: move;
+      border: none;
+      -webkit-box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.05), 0 -2px 1px -2px rgba(0, 0, 0, 0.04), 0 0 0 -1px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.05), 0 -2px 1px -2px rgba(0, 0, 0, 0.04), 0 0 0 -1px rgba(0, 0, 0, 0.05)
+  }
+  
+  .card-block {
+      padding: 1.25rem;
+      background-color: #fff
+  }
+
+  @import url('https://fonts.googleapis.com/css?family=Poppins|Ubuntu&display=swap');
+
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0
+}
+
+body {
+background: #eee;
+font-family: 'Ubuntu', sans-serif
+}
+
+.box {
+position: relative;
+width: 100%;
+padding-right: 15px;
+padding-left: 15px
+}
+
+.our-services {
+margin-top: 75px;
+padding-bottom: 30px;
+padding: 0 60px;
+min-height: 198px;
+text-align: center;
+border-radius: 10px;
+background-color: #fff;
+transition: all .4s ease-in-out;
+box-shadow: 0 0 25px 0 rgba(20, 27, 202, .17)
+}
+
+.our-services .icon {
+margin-bottom: -21px;
+transform: translateY(-50%);
+text-align: center
+}
+
+.our-services:hover h4,
+.our-services:hover p {
+color: #fff
+}
+
+.privacy:hover {
+box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
+cursor: pointer;
+background-image: linear-gradient(-45deg, #3615e7 0%, #44a2f6 100%)
+}
+
+.text-color {
+    color: #fff
+}

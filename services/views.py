@@ -7,6 +7,7 @@ def index(request):
     context ={
          'services' : services
     }
+    
     return render(request, 'services/services.html', context)
 
 def service(request, service_id):
@@ -15,3 +16,5 @@ def service(request, service_id):
         'service' : service
     }
     return render(request, 'services/service.html', context)
+
+

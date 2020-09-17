@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load static %}	
 {% block content %}
 
@@ -7,19 +8,18 @@
 	<div class="container">
 	  <div class="row no-gutters slider-text align-items-end justify-content-center">
 		<div class="col-md-9 ftco-animate pb-5 text-center">
-			<h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Experienced for <br>Every Kinds of ITSolution</h1>
-			<p><a href="{% url 'about' %}" class="btn btn-primary px-4 py-3">Read more</a></p>
+			<h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{% trans "Experienced for Every Kinds of ITSolution" %}</h1>
+			<p><a href="{% url 'about' %}" class="btn btn-primary px-4 py-3">{% trans "Read more" %}</a></p>
 		</div>
 	  </div>
 	</div>
 </section>
 
-
-<section class="ftco-section services-section">
+<section class="ftco-section services-section bg-light">
 	<div class="container">
 		<div class="row justify-content-center pb-4">
 			<div class="col-md-6 heading-section text-center ftco-animate">
-				<h2 class="mb-4">Our Exclusive <span>IT Solution</span> Services</h2>
+				<h2 class="mb-4"><span>{% trans "Our Exclusive IT Solution Services" %}  </h2>
 			</div>
 		</div>
 		<div class="row d-flex no-gutters">
@@ -30,7 +30,7 @@
 					<div class="media-body">
 						<br>
 
-						<h3 class="heading mb-3"> IT application development
+						<h3 class="heading mb-3">{% trans 'IT APPLICATION DEVELOPMENT' %}
 						</h3>
 					</div>
 				</div>      
@@ -41,7 +41,7 @@
 					<div class="icon"><span class="flaticon-stats"></span></div>
 					<div class="media-body">
 						<br>
-						<h3 class="heading mb-3">COMPUTER MAINTENANCE AND INFOGERANCE
+						<h3 class="heading mb-3">{% trans 'COMPUTER MAINTENANCE AND INFOGERANCE' %}
 						</h3>
 					</div>
 				</div>    
@@ -53,7 +53,7 @@
 					<div class="media-body">
 						<br>
 
-						<h3 class="heading mb-3">ELECTRONIC SECURITY
+						<h3 class="heading mb-3">{% trans 'ELECTRONIC SECURITY' %}
 						</h3>
 					</div>
 				</div>      
@@ -65,21 +65,21 @@
 					<div class="media-body">
 						<br>
 
-						<h3 class="heading mb-3">GRAPHICS AND MULTIMEDIA DESIGN
+						<h3 class="heading mb-3">{% trans 'GRAPHICS AND MULTIMEDIA DESIGN' %}
 						</h3>
 					</div>
 				</div>      
 			</div>
 		</div>
-		<center><a href="{% url 'services' %}" class="btn btn-primary px-4 py-3" style="align-content: center;">Explore more services</a></center>
+		<center><a href="{% url 'services' %}" class="btn btn-primary px-4 py-3" style="align-content: center;">{% trans "Explore more services" %}</a></center>
 	</div>
 </section>
 
-<section class="ftco-section ftco-no-pt">
+<section class="ftco-section ftco-no-pt ">
 	<div class="container">
 		<div class="row justify-content-center pb-5">
 			<div class="col-md-12 heading-section text-center ftco-animate">
-				<h2 class="mb-4">Our Strategic <span>Work</span></h2>
+				<h2 class="mb-4"><span> {% trans "Our Strategic Work" %} </span> </h2>
 			</div>
 		</div>
 		<div class="row">
@@ -108,7 +108,7 @@
 	<div class="container-fluid">
 		<div class="row justify-content-center mb-5 pb-3">
 			<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-				<h2 class="mb-4">The creative Team Behind the success</h2>
+				<h2 class="mb-4">{% trans "The creative Team Behind the success" %}</h2>
 			</div>
 		</div>
 		
@@ -130,12 +130,31 @@
 				{%endfor%}		
 	</div>
 </section>
-
+<section>
+<div class="container">
+	<div class="row justify-content-center pb-5">
+		<div class="col-md-12 heading-section text-center ftco-animate">
+			<h2 class="mb-4">{% trans "We build great things with our partners" %}</h2></span></h2>
+		</div>
+	</div>
+	<div class="row">
+		{% for partner in randompartners %}
+		<div class="col-md-4 col-lg-2 ftco-animate">
+			<div class="project">
+				<div class="img">
+					<img src="{{partner.image.url}}" width="120" height="120" >
+				</div>
+			</div>
+		</div>
+		{%endfor%}
+	</div>
+</div>
+</section>
 <section class="ftco-section bg-light">
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-3">
 			<div class="col-md-7 heading-section text-center ftco-animate">
-				<h2>Read from our blog</h2>
+				<h2>{% trans "Read from our blog" %} </h2>
 			</div>
 		</div>
 		<div class="row d-flex">
@@ -165,13 +184,13 @@
 	</div>
 </section>
 
-<section class="ftco-appointment ftco-section img" style="background-image: url('static/website/images/bg_2.jpg');">
+<section class="ftco-appointment ftco-section img" style="background-image: url('static/images/bg_2.jpg');">
 	<div class="overlay"></div>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 half ftco-animate">
-				<h2 class="mb-4">Don't hesitate to
-					<a href="{% url 'contact' %}" >contact us</a>
+				<h2 class="mb-4">{% trans "Don't hesitate to " %} 
+					<a href="{% url 'contact' %}" >{% trans " contact us" %} </a>
 				</h2>
 			</div>
 		</div>
