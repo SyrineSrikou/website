@@ -31,3 +31,4 @@ def comment(request, blogpost_id):
         comment = Comment(name=name, email=email, message=message, blogpost= blogpost)
         comment.save()
     return redirect('/blog/')
+

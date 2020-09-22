@@ -3,6 +3,7 @@ from .models import TeamMember, Partner
 from Blog.models import BlogPost
 from references.models import Reference
 
+
 def index(request):
     randompartners = Partner.objects.all()[:6]
     members = TeamMember.objects.all()
